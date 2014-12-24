@@ -15,7 +15,7 @@ Basic Usage
     String output = amazonEchoApi.httpGet("/api/todos?type=TASK&size=1");
   }
 ```  
-After getting output you can parse the JSON and do whatever you want. If you look at my AmazonEchoApi.java main, you will see that check the TODO list every 15 seconds and store the itemId. If there is a new one the I go ahead and trigger whatever I want.
+After getting output you can parse the JSON and do whatever you want. If you look at my AmazonEchoApi.java main, you will see that I check the TODO list every 15 seconds and store the itemId. If there is a new one then I go ahead and trigger whatever I want.
 
 This example was build with Netbeans and runs in a Raspberry Pi. I included the following libs:
 * HttpClient
