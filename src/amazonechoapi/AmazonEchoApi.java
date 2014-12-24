@@ -40,12 +40,13 @@ import org.jsoup.select.Elements;
  */
 public class AmazonEchoApi {
     
-    private final String BASE_URL = "https://pitangui.amazon.com";
+    private final String BASE_URL;
     private final String USERNAME;
     private final String PASSWORd;
     private final HttpClient httpclient = HttpClientBuilder.create().build();
 
-    public AmazonEchoApi(String username, String password){
+    public AmazonEchoApi(String base_url, String username, String password){
+        this.BASE_URL = base_url;
         this.USERNAME = username;
         this.PASSWORd = password;
     }
@@ -72,6 +73,7 @@ public class AmazonEchoApi {
     }
     
     public boolean httpLogin() {
+
         try {
             String output = httpGet("");
             
@@ -151,7 +153,7 @@ public class AmazonEchoApi {
     }
     
     public static void main(String[] args) throws InterruptedException, IOException {
-        AmazonEchoApi amazonEchoApi = new AmazonEchoApi("username", "password");
+        AmazonEchoApi amazonEchoApi = new AmazonEchoApi("https://pitangui.amazon.com","username", "password");
         if (amazonEchoApi.httpLogin()){
             while (true) {                
                 String output = amazonEchoApi.httpGet("/api/todos?type=TASK&size=1");
