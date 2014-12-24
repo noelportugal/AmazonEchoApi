@@ -9,9 +9,10 @@ Notifications:  https://pitangui.amazon.com/api/notifications
 
 Basic Usage
 =============
+```
   AmazonEchoApi amazonEchoApi = new AmazonEchoApi("https://pitangui.amazon.com","username", "password");
   if (amazonEchoApi.httpLogin()){
     String output = amazonEchoApi.httpGet("/api/todos?type=TASK&size=1");
   }
-  
+```  
 After getting output you can parse the JSON and do whatever you want. If you look at my AmazonEchoApi.java main, you will see that check the TODO list every 15 seconds and store the itemId. If there is a new one the I go ahead and trigger whatever I want.
