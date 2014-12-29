@@ -1,5 +1,8 @@
 AmazonEchoApi
 =============
+
+UPDATE: Check out an implementation https://github.com/noelportugal/AmazonEchoHomeAutomation
+
 This is a simple way to login to Amazon and retrieve the unnoficial Echo API. I purposely didn't use Amazon SDKs so anyone can see how to simulate a login and implement with any language. The endoint investigation was done by Owen Piettes and can be found here http://www.piettes.com/the-amazon-echo-api/.
 
 Here is a list of some the endpoints that are of particular interest to observe:
