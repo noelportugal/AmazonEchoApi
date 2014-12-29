@@ -24,3 +24,37 @@ This example was build with Netbeans and runs in a Raspberry Pi. I included the 
 * HttpClient
 * Simple-JSON
 * JSoup
+
+Full Example
+=============
+```
+    public static void main(String[] args) throws InterruptedException, IOException {
+        AmazonEchoApi amazonEchoApi = new AmazonEchoApi("https://pitangui.amazon.com","username", "password");
+        if (amazonEchoApi.httpLogin()){
+            while (true) {                
+                String output = amazonEchoApi.httpGet("/api/todos?type=TASK&size=1");
+
+                // Parse JSON
+                Object obj = JSONValue.parse(output);
+		JSONObject jsonObject = (JSONObject) obj;
+                JSONArray values = (JSONArray) jsonObject.get("values");
+                JSONObject item = (JSONObject)values.get(0);
+                
+                // Get text and itemId
+                String text = item.get("text").toString();
+                String itemId = item.get("itemId").toString();
+                
+                if (!checkItemId(itemId)){
+                    addItemId(itemId);
+                    System.out.println(text);
+                    // Do something. ie Hue Lights, etc
+                }else{
+                    System.out.println("No new commands");
+                }
+                // Sleep for 15 seconds
+                Thread.sleep(15000);
+            }
+
+        }
+    }
+  ```
